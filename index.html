@@ -58,11 +58,69 @@
   section{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:0 2rem;position:relative;}
   .h-project{min-height:0;display:block;padding:0;}
 
-  #hero{align-items:flex-start;}
-  .hero-title{font-family:var(--display);font-weight:900;font-size:clamp(3.2rem, 11vw, 9rem);line-height:0.92;letter-spacing:-0.01em;}
-  .hero-sub{margin-top:1.5rem;max-width:34ch;font-size:clamp(1rem,2vw,1.3rem);font-weight:500;color:rgba(14,14,16,.7);}
-  .hero-tag{position:absolute;bottom:3rem;left:2rem;font-size:.8rem;font-weight:500;text-transform:uppercase;letter-spacing:.12em;display:flex;align-items:center;gap:.5rem;}
-  .hero-tag .scroll-bounce{width:1px;height:32px;background:var(--ink);animation:bounce 1.8s infinite;transform-origin:top;}
+  #hero{
+    align-items:stretch;justify-content:flex-start;
+    background:#E8160C;color:#0A0A0A;overflow:hidden;
+    padding:0;min-height:100vh;
+  }
+  .hero-meta{
+    position:relative;z-index:3;
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem 1.5rem;
+    padding:5.5rem 2rem 0;
+    font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;
+    color:#0A0A0A;
+  }
+  .hero-meta span{opacity:.85;}
+  .hero-name-bg{
+    position:relative;z-index:1;
+    font-family:var(--display);font-weight:900;
+    font-size:clamp(4.5rem, 17vw, 14rem);
+    line-height:0.82;letter-spacing:-0.02em;
+    color:#0A0A0A;
+    text-align:center;
+    margin:1.5rem 0 0;
+    user-select:none;
+    white-space:nowrap;
+  }
+  .hero-cards{
+    position:relative;z-index:3;
+    display:flex;flex-direction:column;align-items:center;
+    margin:-9rem auto 0;
+    width:min(86vw, 360px);
+  }
+  .hero-card{
+    background:var(--paper);color:var(--ink);
+    width:100%;border-radius:2px;
+    box-shadow:0 30px 60px rgba(0,0,0,.25);
+    overflow:hidden;
+  }
+  .hero-card + .hero-card{margin-top:-2.2rem;margin-left:2.5rem;}
+  .hero-card-head{padding:.9rem 1rem .6rem;}
+  .hero-card-edition{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--mute,#7A7A75);display:flex;gap:.5rem;align-items:center;}
+  .hero-card-title{font-family:var(--display);font-weight:900;font-size:1.15rem;line-height:1.1;margin-top:.3rem;}
+  .hero-card-by{font-size:.72rem;margin-top:.2rem;opacity:.7;}
+  .hero-card img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;}
+
+  .hero-strip{
+    position:relative;z-index:3;
+    display:flex;gap:.5rem;overflow-x:auto;
+    padding:2.5rem 2rem 2rem;
+    margin-top:auto;
+  }
+  .hero-strip img{
+    height:90px;width:68px;object-fit:cover;border-radius:2px;flex-shrink:0;
+    filter:grayscale(20%);
+  }
+
+  .hero-tag{position:absolute;bottom:1.1rem;left:2rem;z-index:3;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;display:flex;align-items:center;gap:.5rem;color:#0A0A0A;}
+  .hero-tag .scroll-bounce{width:1px;height:24px;background:#0A0A0A;animation:bounce 1.8s infinite;transform-origin:top;}
+
+  @media (max-width:760px){
+    .hero-name-bg{font-size:clamp(3rem,16vw,6rem);}
+    .hero-cards{margin-top:-5rem;}
+    .hero-meta{padding:6rem 1.2rem 0;font-size:.62rem;}
+    .hero-strip{padding:1.5rem 1.2rem 5rem;}
+  }
   @keyframes bounce{0%,100%{transform:scaleY(1);}50%{transform:scaleY(0.4);}}
 
   .h-project{position:relative;}
@@ -173,9 +231,47 @@
 </div>
 
 <section id="hero">
-  <h1 class="hero-title">BENJAMIN<br>CATTEAU</h1>
-  <p class="hero-sub" data-i18n-fr>Je conçois des identités visuelles et des systèmes de logo pour des marques qu'on ne peut pas ignorer.</p>
-  <p class="hero-sub" data-i18n-en>I build visual identities and logo systems for brands that want to be impossible to ignore.</p>
+  <div class="hero-meta">
+    <span>Benjamin Catteau©</span>
+    <span data-i18n-fr>Paris — 2026</span><span data-i18n-en>Paris — 2026</span>
+    <span data-i18n-fr>Identité de marque</span><span data-i18n-en>Brand identity</span>
+    <span data-i18n-fr>05 projets</span><span data-i18n-en>05 projects</span>
+    <span data-i18n-fr>Dire bonjour</span><span data-i18n-en>Say hello</span>
+  </div>
+
+  <h1 class="hero-name-bg">CATTEAU</h1>
+
+  <div class="hero-cards">
+    <div class="hero-card">
+      <div class="hero-card-head">
+        <div class="hero-card-edition"><span data-i18n-fr>Identité</span><span data-i18n-en>Identity</span> — 01</div>
+        <div class="hero-card-title">NEXON FESTIVAL</div>
+        <div class="hero-card-by" data-i18n-fr>par Benjamin Catteau</div>
+        <div class="hero-card-by" data-i18n-en>by Benjamin Catteau</div>
+      </div>
+      <img src="images/nexon/Affiche_A2_Nexon_V01.jpg" alt="Nexon Festival">
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-head">
+        <div class="hero-card-edition"><span data-i18n-fr>Identité</span><span data-i18n-en>Identity</span> — 02</div>
+        <div class="hero-card-title">AURAFLOW</div>
+        <div class="hero-card-by" data-i18n-fr>par Benjamin Catteau</div>
+        <div class="hero-card-by" data-i18n-en>by Benjamin Catteau</div>
+      </div>
+      <img src="images/auraflow/03-poster.jpg" alt="Auraflow">
+    </div>
+  </div>
+
+  <div class="hero-strip">
+    <img src="images/nexon/Affiche_A2_Nexon_V01.jpg" alt="">
+    <img src="images/nexon/Badge_Nexon.jpg" alt="">
+    <img src="images/nexon/RS_Insta_Nexon2.jpg" alt="">
+    <img src="images/auraflow/01-logo.jpg" alt="">
+    <img src="images/auraflow/02-logo-system.jpg" alt="">
+    <img src="images/auraflow/04-billboard-color.jpg" alt="">
+    <img src="images/auraflow/06-wheatpaste.jpg" alt="">
+  </div>
+
   <div class="hero-tag"><span class="scroll-bounce"></span><span data-i18n-fr>Faites défiler pour voir les travaux</span><span data-i18n-en>Scroll to see the work</span></div>
 </section>
 
