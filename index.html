@@ -53,6 +53,7 @@
   .dot-nav a:hover, .dot-nav a.active{background:var(--ink);transform:scale(1.4);}
 
   section{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:0 2rem;position:relative;}
+  .h-project{min-height:0;display:block;padding:0;}
 
   #hero{align-items:flex-start;}
   .hero-title{font-family:var(--display);font-weight:900;font-size:clamp(3.2rem, 11vw, 9rem);line-height:0.92;letter-spacing:-0.01em;}
@@ -60,6 +61,43 @@
   .hero-tag{position:absolute;bottom:3rem;left:2rem;font-size:.8rem;font-weight:500;text-transform:uppercase;letter-spacing:.12em;display:flex;align-items:center;gap:.5rem;}
   .hero-tag .scroll-bounce{width:1px;height:32px;background:var(--ink);animation:bounce 1.8s infinite;transform-origin:top;}
   @keyframes bounce{0%,100%{transform:scaleY(1);}50%{transform:scaleY(0.4);}}
+
+  .h-project{position:relative;}
+  .h-sticky{
+    position:sticky;top:0;height:100vh;overflow:hidden;
+    display:flex;flex-direction:column;color:var(--paper);
+  }
+  .h-sticky .bg-shape{position:absolute;inset:0;z-index:0;opacity:.9;pointer-events:none;}
+  .h-head{position:relative;z-index:3;padding:7rem 2rem 0;pointer-events:none;}
+  .h-track{
+    position:relative;z-index:2;flex:1;
+    display:flex;align-items:center;gap:1.2rem;
+    padding:2rem;will-change:transform;
+  }
+  .h-track figure{
+    margin:0;height:100%;flex-shrink:0;position:relative;
+    border-radius:6px;overflow:hidden;background:#000;
+  }
+  .h-track img{height:100%;width:auto;max-width:80vw;object-fit:cover;display:block;}
+  .h-track figcaption{
+    position:absolute;left:0;bottom:0;right:0;
+    font-size:.7rem;font-weight:500;
+    padding:.5rem .7rem;
+    background:linear-gradient(to top, rgba(0,0,0,.75), transparent);
+    color:var(--p1-accent);
+    opacity:0;transition:opacity .25s ease;
+  }
+  .h-track figure:hover figcaption{opacity:1;}
+  .h-progress{
+    position:absolute;left:2rem;right:2rem;bottom:1.4rem;height:2px;
+    background:rgba(245,243,238,.2);z-index:3;
+  }
+  .h-progress-bar{height:100%;width:0%;background:var(--p1-accent);}
+
+  #p1 .h-sticky{background:var(--p1);}
+  #p2 .h-sticky{background:#0E0E10;}
+  #p2 .h-track figcaption{color:#F5763B;}
+  #p2 .h-progress-bar{background:#F5763B;}
 
   .project{color:var(--paper);align-items:flex-start;justify-content:flex-start;overflow:hidden;padding-top:7rem;padding-bottom:3rem;}
   .project .bg-shape{position:absolute;inset:0;z-index:0;opacity:.9;}
@@ -70,51 +108,24 @@
   .project-meta span{display:block;text-transform:uppercase;letter-spacing:.08em;font-size:.75rem;opacity:.75;margin-bottom:.4rem;}
 
   .shape{position:absolute;}
-  #p2 .bg-shape .shape{width:50vw;height:50vw;background:rgba(245,243,238,.08);bottom:-15%;left:-10%;transform:rotate(20deg);}
   #p3 .bg-shape .shape{width:0;height:0;border-left:30vw solid transparent;border-right:30vw solid transparent;border-bottom:50vw solid rgba(245,243,238,.07);top:-10%;right:5%;}
   #p4 .bg-shape .shape{width:55vw;height:18vw;background:rgba(14,14,16,.08);top:40%;left:-5%;transform:rotate(-8deg);}
   #p5 .bg-shape .shape{width:40vw;height:40vw;border-radius:50%;border:3vw solid rgba(245,243,238,.08);bottom:-10%;right:-5%;}
 
-  #p1{background:var(--p1);}
-  #p2{background:#0E0E10;}
-  #p2 .nexon-gallery figcaption{color:#F5763B;}
   #p3{background:var(--p3);}
   #p4{background:var(--p4);color:var(--ink);}
   #p5{background:var(--p5);}
 
-  .nexon-gallery{
-    position:relative;z-index:2;
-    display:grid;
-    grid-template-columns:repeat(6,1fr);
-    grid-auto-rows:10vw;
-    gap:.6rem;
-    width:100%;
-  }
-  .nexon-gallery figure{margin:0;overflow:hidden;border-radius:4px;background:#000;position:relative;}
-  .nexon-gallery img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease;}
-  .nexon-gallery figure:hover img{transform:scale(1.04);}
-  .nexon-gallery figcaption{
-    position:absolute;left:0;bottom:0;right:0;
-    font-size:.7rem;font-weight:500;
-    padding:.4rem .6rem;
-    background:linear-gradient(to top, rgba(0,0,0,.75), transparent);
-    color:var(--p1-accent);
-    opacity:0;transition:opacity .25s ease;
-  }
-  .nexon-gallery figure:hover figcaption{opacity:1;}
-  .g-poster{grid-column:span 2;grid-row:span 3;}
-  .g-badge{grid-column:span 2;grid-row:span 2;}
-  .g-banner{grid-column:span 4;grid-row:span 2;}
-  .g-pass{grid-column:span 2;grid-row:span 1;}
-  .g-prog{grid-column:span 2;grid-row:span 2;}
-  .g-insta1{grid-column:span 2;grid-row:span 2;}
-  .g-insta2{grid-column:span 2;grid-row:span 2;}
-
-  @media (max-width:900px){
-    .nexon-gallery{grid-template-columns:repeat(2,1fr);grid-auto-rows:32vw;}
-    .g-poster,.g-badge,.g-banner,.g-pass,.g-prog,.g-insta1,.g-insta2{grid-column:span 1;grid-row:span 1;}
-    .g-poster{grid-row:span 2;}
-    .g-banner{grid-column:span 2;grid-row:span 1;}
+  @media (max-width:760px){
+    .h-sticky{position:relative;height:auto;display:block;padding-bottom:2rem;}
+    .h-head{padding:6rem 1.2rem 1.5rem;}
+    .h-track{
+      display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;
+      transform:none !important;padding:0 1.2rem 1.2rem;height:60vw;
+      scroll-snap-type:x proximity;
+    }
+    .h-track figure{scroll-snap-align:start;}
+    .h-progress{display:none;}
   }
 
   #contact{background:var(--ink);color:var(--paper);align-items:flex-start;}
@@ -168,46 +179,54 @@
 
 <section id="work" style="min-height:0;height:0;padding:0;"></section>
 
-<section id="p1" class="project">
-  <div class="project-head">
-    <span class="project-num" data-i18n-fr>01 — Identité</span>
-    <span class="project-num" data-i18n-en>01 — Identity</span>
-    <h2 class="project-title">NEXON FESTIVAL</h2>
-    <p class="project-meta">
-      <span data-i18n-fr>Périmètre</span><span data-i18n-en>Scope</span>
-      <span data-i18n-fr>Logo, identité visuelle, signalétique, badges, pass, affiche</span>
-      <span data-i18n-en>Logo, visual identity, signage, badges, passes, poster</span>
-    </p>
-  </div>
-  <div class="nexon-gallery">
-    <figure class="g-poster"><img src="images/nexon/Affiche_A2_Nexon_V01.png" alt="Nexon festival poster"><figcaption data-i18n-fr>Affiche A2</figcaption><figcaption data-i18n-en>A2 poster</figcaption></figure>
-    <figure class="g-banner"><img src="images/nexon/Banniere_FB_Nexon.png" alt="Nexon Facebook banner"><figcaption data-i18n-fr>Bannière Facebook</figcaption><figcaption data-i18n-en>Facebook banner</figcaption></figure>
-    <figure class="g-badge"><img src="images/nexon/Badge_Nexon.png" alt="Nexon staff badge"><figcaption data-i18n-fr>Badge</figcaption><figcaption data-i18n-en>Badge</figcaption></figure>
-    <figure class="g-pass"><img src="images/nexon/Pass2j_Nexon.png" alt="Nexon 2-day pass"><figcaption data-i18n-fr>Pass 2 jours</figcaption><figcaption data-i18n-en>2-day pass</figcaption></figure>
-    <figure class="g-prog"><img src="images/nexon/Programme_Nexon.png" alt="Nexon programme"><figcaption data-i18n-fr>Programme</figcaption><figcaption data-i18n-en>Programme</figcaption></figure>
-    <figure class="g-insta1"><img src="images/nexon/RS_Insta_Nexon2.png" alt="Nexon Instagram post"><figcaption data-i18n-fr>Réseaux sociaux</figcaption><figcaption data-i18n-en>Social media</figcaption></figure>
-    <figure class="g-insta2"><img src="images/nexon/RS_Insta_Nexon5.png" alt="Nexon Instagram post"><figcaption data-i18n-fr>Réseaux sociaux</figcaption><figcaption data-i18n-en>Social media</figcaption></figure>
+<section id="p1" class="h-project" style="height:320vh;">
+  <div class="h-sticky">
+    <div class="bg-shape"></div>
+    <div class="h-head">
+      <span class="project-num" data-i18n-fr>01 — Identité</span>
+      <span class="project-num" data-i18n-en>01 — Identity</span>
+      <h2 class="project-title">NEXON FESTIVAL</h2>
+      <p class="project-meta">
+        <span data-i18n-fr>Périmètre</span><span data-i18n-en>Scope</span>
+        <span data-i18n-fr>Logo, identité visuelle, signalétique, badges, pass, affiche</span>
+        <span data-i18n-en>Logo, visual identity, signage, badges, passes, poster</span>
+      </p>
+    </div>
+    <div class="h-track">
+      <figure><img src="images/nexon/Affiche_A2_Nexon_V01.jpg" alt="Nexon festival poster"><figcaption data-i18n-fr>Affiche A2</figcaption><figcaption data-i18n-en>A2 poster</figcaption></figure>
+      <figure><img src="images/nexon/Banniere_FB_Nexon.jpg" alt="Nexon Facebook banner"><figcaption data-i18n-fr>Bannière Facebook</figcaption><figcaption data-i18n-en>Facebook banner</figcaption></figure>
+      <figure><img src="images/nexon/Badge_Nexon.jpg" alt="Nexon staff badge"><figcaption data-i18n-fr>Badge</figcaption><figcaption data-i18n-en>Badge</figcaption></figure>
+      <figure><img src="images/nexon/Pass2j_Nexon.jpg" alt="Nexon 2-day pass"><figcaption data-i18n-fr>Pass 2 jours</figcaption><figcaption data-i18n-en>2-day pass</figcaption></figure>
+      <figure><img src="images/nexon/Programme_Nexon.jpg" alt="Nexon programme"><figcaption data-i18n-fr>Programme</figcaption><figcaption data-i18n-en>Programme</figcaption></figure>
+      <figure><img src="images/nexon/RS_Insta_Nexon2.jpg" alt="Nexon Instagram post"><figcaption data-i18n-fr>Réseaux sociaux</figcaption><figcaption data-i18n-en>Social media</figcaption></figure>
+      <figure><img src="images/nexon/RS_Insta_Nexon5.jpg" alt="Nexon Instagram post"><figcaption data-i18n-fr>Réseaux sociaux</figcaption><figcaption data-i18n-en>Social media</figcaption></figure>
+    </div>
+    <div class="h-progress"><div class="h-progress-bar"></div></div>
   </div>
 </section>
 
-<section id="p2" class="project">
-  <div class="project-head">
-    <span class="project-num" data-i18n-fr>02 — Identité</span>
-    <span class="project-num" data-i18n-en>02 — Identity</span>
-    <h2 class="project-title">AURAFLOW</h2>
-    <p class="project-meta">
-      <span data-i18n-fr>Périmètre</span><span data-i18n-en>Scope</span>
-      <span data-i18n-fr>Logo, système de marque, packaging, campagne d'affichage</span>
-      <span data-i18n-en>Logo, brand system, packaging, outdoor campaign</span>
-    </p>
-  </div>
-  <div class="nexon-gallery">
-    <figure class="g-poster"><img src="images/auraflow/01-logo.jpg" alt="Auraflow logo"><figcaption data-i18n-fr>Logo</figcaption><figcaption data-i18n-en>Logo</figcaption></figure>
-    <figure class="g-banner"><img src="images/auraflow/04-billboard-color.jpg" alt="Auraflow billboard campaign"><figcaption data-i18n-fr>Campagne d'affichage</figcaption><figcaption data-i18n-en>Billboard campaign</figcaption></figure>
-    <figure class="g-badge"><img src="images/auraflow/02-logo-system.jpg" alt="Auraflow logo system"><figcaption data-i18n-fr>Système de logo</figcaption><figcaption data-i18n-en>Logo system</figcaption></figure>
-    <figure class="g-pass"><img src="images/auraflow/03-poster.jpg" alt="Auraflow poster"><figcaption data-i18n-fr>Affiche</figcaption><figcaption data-i18n-en>Poster</figcaption></figure>
-    <figure class="g-prog"><img src="images/auraflow/05-billboard-trees.jpg" alt="Auraflow billboard mockup"><figcaption data-i18n-fr>Panneau publicitaire</figcaption><figcaption data-i18n-en>Billboard mockup</figcaption></figure>
-    <figure class="g-insta1" style="grid-column:span 4;"><img src="images/auraflow/06-wheatpaste.jpg" alt="Auraflow wheatpaste poster"><figcaption data-i18n-fr>Affichage sauvage</figcaption><figcaption data-i18n-en>Street poster</figcaption></figure>
+<section id="p2" class="h-project" style="height:320vh;">
+  <div class="h-sticky">
+    <div class="bg-shape"></div>
+    <div class="h-head">
+      <span class="project-num" data-i18n-fr>02 — Identité</span>
+      <span class="project-num" data-i18n-en>02 — Identity</span>
+      <h2 class="project-title">AURAFLOW</h2>
+      <p class="project-meta">
+        <span data-i18n-fr>Périmètre</span><span data-i18n-en>Scope</span>
+        <span data-i18n-fr>Logo, système de marque, packaging, campagne d'affichage</span>
+        <span data-i18n-en>Logo, brand system, packaging, outdoor campaign</span>
+      </p>
+    </div>
+    <div class="h-track">
+      <figure><img src="images/auraflow/01-logo.jpg" alt="Auraflow logo"><figcaption data-i18n-fr>Logo</figcaption><figcaption data-i18n-en>Logo</figcaption></figure>
+      <figure><img src="images/auraflow/02-logo-system.jpg" alt="Auraflow logo system"><figcaption data-i18n-fr>Système de logo</figcaption><figcaption data-i18n-en>Logo system</figcaption></figure>
+      <figure><img src="images/auraflow/03-poster.jpg" alt="Auraflow poster"><figcaption data-i18n-fr>Affiche</figcaption><figcaption data-i18n-en>Poster</figcaption></figure>
+      <figure><img src="images/auraflow/04-billboard-color.jpg" alt="Auraflow billboard campaign"><figcaption data-i18n-fr>Campagne d'affichage</figcaption><figcaption data-i18n-en>Billboard campaign</figcaption></figure>
+      <figure><img src="images/auraflow/05-billboard-trees.jpg" alt="Auraflow billboard mockup"><figcaption data-i18n-fr>Panneau publicitaire</figcaption><figcaption data-i18n-en>Billboard mockup</figcaption></figure>
+      <figure><img src="images/auraflow/06-wheatpaste.jpg" alt="Auraflow wheatpaste poster"><figcaption data-i18n-fr>Affichage sauvage</figcaption><figcaption data-i18n-en>Street poster</figcaption></figure>
+    </div>
+    <div class="h-progress"><div class="h-progress-bar"></div></div>
   </div>
 </section>
 
@@ -280,6 +299,54 @@
     });
   }, {threshold:0.5});
   sections.forEach(s=>{ if(s.id) io.observe(s); });
+
+  // ---- horizontal scroll-driven galleries ----
+  function updateHProjects(){
+    if(window.innerWidth <= 760) return;
+    document.querySelectorAll('.h-project').forEach(sec=>{
+      const track = sec.querySelector('.h-track');
+      const bar = sec.querySelector('.h-progress-bar');
+      const rect = sec.getBoundingClientRect();
+      const scrollable = sec.offsetHeight - window.innerHeight;
+      if(scrollable <= 0) return;
+      let progress = (-rect.top) / scrollable;
+      progress = Math.max(0, Math.min(1, progress));
+      const maxTranslate = Math.max(0, track.scrollWidth - track.clientWidth);
+      track.style.transform = 'translateX(-' + (progress * maxTranslate) + 'px)';
+      if(bar) bar.style.width = (progress * 100) + '%';
+    });
+  }
+
+  function sizeHProjects(){
+    if(window.innerWidth <= 760){
+      document.querySelectorAll('.h-project').forEach(sec=>{ sec.style.height = 'auto'; });
+      return;
+    }
+    document.querySelectorAll('.h-project').forEach(sec=>{
+      const track = sec.querySelector('.h-track');
+      const overflow = Math.max(0, track.scrollWidth - track.clientWidth);
+      sec.style.height = (window.innerHeight + overflow) + 'px';
+    });
+    updateHProjects();
+  }
+
+  window.addEventListener('scroll', updateHProjects, {passive:true});
+  window.addEventListener('resize', sizeHProjects);
+  window.addEventListener('load', sizeHProjects);
+
+  // recompute once all images report loaded (sizes affect scrollWidth)
+  const galleryImgs = document.querySelectorAll('.h-track img');
+  let toLoad = galleryImgs.length;
+  if(toLoad === 0){ sizeHProjects(); }
+  galleryImgs.forEach(img=>{
+    if(img.complete){ toLoad--; }
+    else{
+      img.addEventListener('load', ()=>{ toLoad--; if(toLoad<=0) sizeHProjects(); });
+      img.addEventListener('error', ()=>{ toLoad--; if(toLoad<=0) sizeHProjects(); });
+    }
+  });
+  if(toLoad <= 0){ sizeHProjects(); }
+  setTimeout(sizeHProjects, 600);
 </script>
 
 </body>
