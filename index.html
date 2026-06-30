@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Studio — Brand & Identity Portfolio</title>
+<title>Benjamin Catteau — Portfolio Identité de marque</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
@@ -11,204 +11,69 @@
   :root{
     --ink:#0E0E10;
     --paper:#F5F3EE;
-    --p1:#FF3B1F; /* project 1 accent */
-    --p2:#1F5DFF; /* project 2 accent */
-    --p3:#13B85C; /* project 3 accent */
-    --p4:#FFC400; /* project 4 accent */
-    --p5:#9B1FFF; /* project 5 accent */
-    --display: 'Archivo Black', sans-serif;
+    --p1:#0E0E10;
+    --p1-accent:#F5E000;
+    --p2:#1F5DFF;
+    --p3:#13B85C;
+    --p4:#FFC400;
+    --p5:#9B1FFF;
     --body: 'Space Grotesk', sans-serif;
+    --display:'Origin', 'Archivo Black', sans-serif;
+  }
+  @font-face{
+    font-family:'Origin';
+    src:url('fonts/Origin-VF.ttf') format('truetype-variations'), url('fonts/Origin-VF.ttf') format('truetype');
+    font-weight:100 900;
+    font-stretch:75% 125%;
+    font-display:swap;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
-  body{
-    background:var(--paper);
-    color:var(--ink);
-    font-family:var(--body);
-    overflow-x:hidden;
-  }
+  body{background:var(--paper);color:var(--ink);font-family:var(--body);overflow-x:hidden;}
   ::selection{background:var(--ink);color:var(--paper);}
+  img{max-width:100%;display:block;}
 
-  /* ---- NAV ---- */
   nav{
-    position:fixed;
-    top:0;left:0;right:0;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:1.5rem 2rem;
-    z-index:100;
-    mix-blend-mode:difference;
-    color:var(--paper);
+    position:fixed;top:0;left:0;right:0;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:1.5rem 2rem;z-index:100;
+    mix-blend-mode:difference;color:var(--paper);
   }
-  nav a{color:inherit;text-decoration:none;}
-  .nav-name{
-    font-family:var(--display);
-    font-size:1rem;
-    letter-spacing:0.02em;
-  }
+  nav a, nav button{color:inherit;text-decoration:none;background:none;border:none;font-family:var(--body);cursor:pointer;}
+  .nav-name{font-family:var(--display);font-weight:900;font-size:1rem;letter-spacing:0.02em;}
+  .nav-right{display:flex;align-items:center;gap:1.75rem;}
   .nav-links{display:flex;gap:1.75rem;font-size:0.85rem;font-weight:500;}
   .nav-links a{position:relative;}
-  .nav-links a:after{
-    content:"";position:absolute;left:0;bottom:-3px;width:0;height:1.5px;background:var(--paper);
-    transition:width .25s ease;
-  }
+  .nav-links a:after{content:"";position:absolute;left:0;bottom:-3px;width:0;height:1.5px;background:var(--paper);transition:width .25s ease;}
   .nav-links a:hover:after{width:100%;}
+  #langToggle{font-size:.8rem;font-weight:700;letter-spacing:.05em;border:1px solid currentColor;padding:.25rem .6rem;border-radius:2px;}
 
-  /* side dot nav */
-  .dot-nav{
-    position:fixed;
-    right:1.5rem;top:50%;
-    transform:translateY(-50%);
-    display:flex;flex-direction:column;gap:.9rem;
-    z-index:90;
-  }
-  .dot-nav a{
-    width:9px;height:9px;border-radius:50%;
-    background:rgba(14,14,16,.25);
-    display:block;
-    transition:transform .2s ease, background .2s ease;
-  }
-  .dot-nav a:hover, .dot-nav a.active{
-    background:var(--ink);
-    transform:scale(1.4);
-  }
+  .dot-nav{position:fixed;right:1.5rem;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:.9rem;z-index:90;}
+  .dot-nav a{width:9px;height:9px;border-radius:50%;background:rgba(14,14,16,.25);display:block;transition:transform .2s ease, background .2s ease;}
+  .dot-nav a:hover, .dot-nav a.active{background:var(--ink);transform:scale(1.4);}
 
-  section{
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    padding:0 2rem;
-    position:relative;
-  }
+  section{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:0 2rem;position:relative;}
 
-  /* ---- HERO ---- */
-  #hero{
-    align-items:flex-start;
-  }
-  .hero-title{
-    font-family:var(--display);
-    font-size:clamp(3.2rem, 11vw, 9rem);
-    line-height:0.92;
-    letter-spacing:-0.01em;
-  }
-  .hero-sub{
-    margin-top:1.5rem;
-    max-width:34ch;
-    font-size:clamp(1rem,2vw,1.3rem);
-    font-weight:500;
-    color:rgba(14,14,16,.7);
-  }
-  .hero-tag{
-    position:absolute;
-    bottom:3rem;left:2rem;
-    font-size:.8rem;
-    font-weight:500;
-    text-transform:uppercase;
-    letter-spacing:.12em;
-    display:flex;
-    align-items:center;
-    gap:.5rem;
-  }
-  .hero-tag .scroll-bounce{
-    width:1px;height:32px;
-    background:var(--ink);
-    animation:bounce 1.8s infinite;
-    transform-origin:top;
-  }
-  @keyframes bounce{
-    0%,100%{transform:scaleY(1);}
-    50%{transform:scaleY(0.4);}
-  }
+  #hero{align-items:flex-start;}
+  .hero-title{font-family:var(--display);font-weight:900;font-size:clamp(3.2rem, 11vw, 9rem);line-height:0.92;letter-spacing:-0.01em;}
+  .hero-sub{margin-top:1.5rem;max-width:34ch;font-size:clamp(1rem,2vw,1.3rem);font-weight:500;color:rgba(14,14,16,.7);}
+  .hero-tag{position:absolute;bottom:3rem;left:2rem;font-size:.8rem;font-weight:500;text-transform:uppercase;letter-spacing:.12em;display:flex;align-items:center;gap:.5rem;}
+  .hero-tag .scroll-bounce{width:1px;height:32px;background:var(--ink);animation:bounce 1.8s infinite;transform-origin:top;}
+  @keyframes bounce{0%,100%{transform:scaleY(1);}50%{transform:scaleY(0.4);}}
 
-  /* ---- PROJECT SECTIONS ---- */
-  .project{
-    color:var(--paper);
-    align-items:flex-start;
-    justify-content:flex-end;
-    overflow:hidden;
-  }
-  .project .bg-shape{
-    position:absolute;
-    inset:0;
-    z-index:0;
-    opacity:.9;
-  }
-  .project-inner{
-    position:relative;
-    z-index:2;
-    width:100%;
-    padding-bottom:4rem;
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-end;
-    flex-wrap:wrap;
-    gap:2rem;
-  }
-  .project-num{
-    font-family:var(--body);
-    font-size:.85rem;
-    font-weight:700;
-    letter-spacing:.1em;
-    text-transform:uppercase;
-    opacity:.8;
-    margin-bottom:.75rem;
-    display:block;
-  }
-  .project-title{
-    font-family:var(--display);
-    font-size:clamp(2.6rem,8vw,6.5rem);
-    line-height:0.95;
-    max-width:14ch;
-  }
-  .project-meta{
-    font-size:.95rem;
-    font-weight:500;
-    text-align:right;
-    max-width:24ch;
-    opacity:.95;
-  }
-  .project-meta span{
-    display:block;
-    text-transform:uppercase;
-    letter-spacing:.08em;
-    font-size:.75rem;
-    opacity:.75;
-    margin-bottom:.4rem;
-  }
+  .project{color:var(--paper);align-items:flex-start;justify-content:flex-start;overflow:hidden;padding-top:7rem;padding-bottom:3rem;}
+  .project .bg-shape{position:absolute;inset:0;z-index:0;opacity:.9;}
+  .project-head{position:relative;z-index:2;width:100%;margin-bottom:2.5rem;}
+  .project-num{font-size:.85rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.8;margin-bottom:.75rem;display:block;}
+  .project-title{font-family:var(--display);font-weight:900;font-size:clamp(2.6rem,8vw,6.5rem);line-height:0.95;max-width:18ch;}
+  .project-meta{margin-top:1rem;font-size:.95rem;font-weight:500;max-width:42ch;opacity:.95;}
+  .project-meta span{display:block;text-transform:uppercase;letter-spacing:.08em;font-size:.75rem;opacity:.75;margin-bottom:.4rem;}
 
-  /* abstract brand-mark shapes per project, pure CSS */
   .shape{position:absolute;}
-  #p1 .bg-shape .shape{
-    width:60vw;height:60vw;border-radius:50%;
-    background:rgba(245,243,238,.08);
-    top:-20%;right:-15%;
-  }
-  #p2 .bg-shape .shape{
-    width:50vw;height:50vw;
-    background:rgba(245,243,238,.08);
-    bottom:-15%;left:-10%;
-    transform:rotate(20deg);
-  }
-  #p3 .bg-shape .shape{
-    width:0;height:0;
-    border-left:30vw solid transparent;
-    border-right:30vw solid transparent;
-    border-bottom:50vw solid rgba(245,243,238,.07);
-    top:-10%;right:5%;
-  }
-  #p4 .bg-shape .shape{
-    width:55vw;height:18vw;
-    background:rgba(14,14,16,.08);
-    top:40%;left:-5%;
-    transform:rotate(-8deg);
-  }
-  #p5 .bg-shape .shape{
-    width:40vw;height:40vw;border-radius:50%;
-    border:3vw solid rgba(245,243,238,.08);
-    bottom:-10%;right:-5%;
-  }
+  #p2 .bg-shape .shape{width:50vw;height:50vw;background:rgba(245,243,238,.08);bottom:-15%;left:-10%;transform:rotate(20deg);}
+  #p3 .bg-shape .shape{width:0;height:0;border-left:30vw solid transparent;border-right:30vw solid transparent;border-bottom:50vw solid rgba(245,243,238,.07);top:-10%;right:5%;}
+  #p4 .bg-shape .shape{width:55vw;height:18vw;background:rgba(14,14,16,.08);top:40%;left:-5%;transform:rotate(-8deg);}
+  #p5 .bg-shape .shape{width:40vw;height:40vw;border-radius:50%;border:3vw solid rgba(245,243,238,.08);bottom:-10%;right:-5%;}
 
   #p1{background:var(--p1);}
   #p2{background:var(--p2);}
@@ -216,62 +81,69 @@
   #p4{background:var(--p4);color:var(--ink);}
   #p5{background:var(--p5);}
 
-  /* ---- ABOUT / CONTACT ---- */
-  #contact{
-    background:var(--ink);
-    color:var(--paper);
-    align-items:flex-start;
-  }
-  .contact-title{
-    font-family:var(--display);
-    font-size:clamp(2.6rem,9vw,7rem);
-    line-height:0.95;
-    max-width:16ch;
-  }
-  .contact-links{
-    margin-top:2.5rem;
-    display:flex;
-    flex-direction:column;
+  .nexon-gallery{
+    position:relative;z-index:2;
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    grid-auto-rows:10vw;
     gap:.6rem;
+    width:100%;
   }
-  .contact-links a{
-    color:var(--paper);
-    font-size:clamp(1.1rem,2.4vw,1.6rem);
-    font-weight:700;
-    text-decoration:none;
-    width:fit-content;
-    border-bottom:2px solid transparent;
-    transition:border-color .2s ease, opacity .2s ease;
+  .nexon-gallery figure{margin:0;overflow:hidden;border-radius:4px;background:#000;position:relative;}
+  .nexon-gallery img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease;}
+  .nexon-gallery figure:hover img{transform:scale(1.04);}
+  .nexon-gallery figcaption{
+    position:absolute;left:0;bottom:0;right:0;
+    font-size:.7rem;font-weight:500;
+    padding:.4rem .6rem;
+    background:linear-gradient(to top, rgba(0,0,0,.75), transparent);
+    color:var(--p1-accent);
+    opacity:0;transition:opacity .25s ease;
   }
-  .contact-links a:hover{
-    border-color:var(--paper);
+  .nexon-gallery figure:hover figcaption{opacity:1;}
+  .g-poster{grid-column:span 2;grid-row:span 3;}
+  .g-badge{grid-column:span 2;grid-row:span 2;}
+  .g-banner{grid-column:span 4;grid-row:span 2;}
+  .g-pass{grid-column:span 2;grid-row:span 1;}
+  .g-prog{grid-column:span 2;grid-row:span 2;}
+  .g-insta1{grid-column:span 2;grid-row:span 2;}
+  .g-insta2{grid-column:span 2;grid-row:span 2;}
+
+  @media (max-width:900px){
+    .nexon-gallery{grid-template-columns:repeat(2,1fr);grid-auto-rows:32vw;}
+    .g-poster,.g-badge,.g-banner,.g-pass,.g-prog,.g-insta1,.g-insta2{grid-column:span 1;grid-row:span 1;}
+    .g-poster{grid-row:span 2;}
+    .g-banner{grid-column:span 2;grid-row:span 1;}
   }
-  footer{
-    position:absolute;
-    bottom:1.5rem;left:2rem;right:2rem;
-    display:flex;
-    justify-content:space-between;
-    font-size:.75rem;
-    text-transform:uppercase;
-    letter-spacing:.1em;
-    opacity:.6;
-  }
+
+  #contact{background:var(--ink);color:var(--paper);align-items:flex-start;}
+  .contact-title{font-family:var(--display);font-weight:900;font-size:clamp(2.6rem,9vw,7rem);line-height:0.95;max-width:16ch;}
+  .contact-links{margin-top:2.5rem;display:flex;flex-direction:column;gap:.6rem;}
+  .contact-links a{color:var(--paper);font-size:clamp(1.1rem,2.4vw,1.6rem);font-weight:700;text-decoration:none;width:fit-content;border-bottom:2px solid transparent;transition:border-color .2s ease;}
+  .contact-links a:hover{border-color:var(--paper);}
+  footer{position:absolute;bottom:1.5rem;left:2rem;right:2rem;display:flex;justify-content:space-between;font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;opacity:.6;}
+
+  html[lang="en"] [data-i18n-fr]{display:none !important;}
+  html[lang="fr"] [data-i18n-en]{display:none !important;}
 
   @media (max-width:640px){
     .dot-nav{display:none;}
     nav{padding:1.2rem 1.2rem;}
     section{padding:0 1.2rem;}
-    .project-inner{padding-bottom:2.5rem;}
+    .project{padding-top:6rem;}
   }
 </style>
 </head>
 <body>
 
 <nav>
-  <a href="#hero" class="nav-name">JANE&nbsp;DOE</a>
-  <div class="nav-links">
-    <a href="#work">Work</a>
-    <a href="#contact">Contact</a>
+  <a href="#hero" class="nav-name">BENJAMIN&nbsp;CATTEAU</a>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="#work" data-i18n-fr>Travaux</a><a href="#work" data-i18n-en>Work</a>
+      <a href="#contact" data-i18n-fr>Contact</a><a href="#contact" data-i18n-en>Contact</a>
+    </div>
+    <button id="langToggle" onclick="toggleLang()">EN</button>
   </div>
 </nav>
 
@@ -286,82 +158,105 @@
 </div>
 
 <section id="hero">
-  <h1 class="hero-title">BRAND<br>IDENTITY<br>DESIGNER</h1>
-  <p class="hero-sub">I build visual identities and logo systems for brands that want to be impossible to ignore.</p>
-  <div class="hero-tag"><span class="scroll-bounce"></span>Scroll to see the work</div>
+  <h1 class="hero-title" data-i18n-fr>IDENTITÉ<br>DE&nbsp;MARQUE</h1>
+  <h1 class="hero-title" data-i18n-en>BRAND<br>IDENTITY</h1>
+  <p class="hero-sub" data-i18n-fr>Je conçois des identités visuelles et des systèmes de logo pour des marques qu'on ne peut pas ignorer.</p>
+  <p class="hero-sub" data-i18n-en>I build visual identities and logo systems for brands that want to be impossible to ignore.</p>
+  <div class="hero-tag"><span class="scroll-bounce"></span><span data-i18n-fr>Faites défiler pour voir les travaux</span><span data-i18n-en>Scroll to see the work</span></div>
 </section>
 
 <section id="work" style="min-height:0;height:0;padding:0;"></section>
 
 <section id="p1" class="project">
-  <div class="bg-shape"><div class="shape"></div></div>
-  <div class="project-inner">
-    <div>
-      <span class="project-num">01 — Identity</span>
-      <h2 class="project-title">NORTHBOUND COFFEE CO.</h2>
-    </div>
-    <div class="project-meta"><span>Scope</span>Logo, packaging, signage system</div>
+  <div class="project-head">
+    <span class="project-num" data-i18n-fr>01 — Identité</span>
+    <span class="project-num" data-i18n-en>01 — Identity</span>
+    <h2 class="project-title">NEXON FESTIVAL</h2>
+    <p class="project-meta">
+      <span data-i18n-fr>Périmètre</span><span data-i18n-en>Scope</span>
+      <span data-i18n-fr>Logo, identité visuelle, signalétique, badges, pass, affiche</span>
+      <span data-i18n-en>Logo, visual identity, signage, badges, passes, poster</span>
+    </p>
+  </div>
+  <div class="nexon-gallery">
+    <figure class="g-poster"><img src="images/nexon/Affiche_A2_Nexon_V01.png" alt="Nexon festival poster"><figcaption data-i18n-fr>Affiche A2</figcaption><figcaption data-i18n-en>A2 poster</figcaption></figure>
+    <figure class="g-banner"><img src="images/nexon/Banniere_FB_Nexon.png" alt="Nexon Facebook banner"><figcaption data-i18n-fr>Bannière Facebook</figcaption><figcaption data-i18n-en>Facebook banner</figcaption></figure>
+    <figure class="g-badge"><img src="images/nexon/Badge_Nexon.png" alt="Nexon staff badge"><figcaption data-i18n-fr>Badge</figcaption><figcaption data-i18n-en>Badge</figcaption></figure>
+    <figure class="g-pass"><img src="images/nexon/Pass2j_Nexon.png" alt="Nexon 2-day pass"><figcaption data-i18n-fr>Pass 2 jours</figcaption><figcaption data-i18n-en>2-day pass</figcaption></figure>
+    <figure class="g-prog"><img src="images/nexon/Programme_Nexon.png" alt="Nexon programme"><figcaption data-i18n-fr>Programme</figcaption><figcaption data-i18n-en>Programme</figcaption></figure>
+    <figure class="g-insta1"><img src="images/nexon/RS_Insta_Nexon2.png" alt="Nexon Instagram post"><figcaption data-i18n-fr>Réseaux sociaux</figcaption><figcaption data-i18n-en>Social media</figcaption></figure>
+    <figure class="g-insta2"><img src="images/nexon/RS_Insta_Nexon5.png" alt="Nexon Instagram post"><figcaption data-i18n-fr>Réseaux sociaux</figcaption><figcaption data-i18n-en>Social media</figcaption></figure>
   </div>
 </section>
 
-<section id="p2" class="project">
+<section id="p2" class="project" style="padding-top:0;justify-content:flex-end;">
   <div class="bg-shape"><div class="shape"></div></div>
-  <div class="project-inner">
+  <div class="project-head" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:2rem;">
     <div>
-      <span class="project-num">02 — Identity</span>
+      <span class="project-num" data-i18n-fr>02 — Identité</span><span class="project-num" data-i18n-en>02 — Identity</span>
       <h2 class="project-title">VOLT ATHLETICS</h2>
     </div>
-    <div class="project-meta"><span>Scope</span>Wordmark, kit graphics, brand guidelines</div>
+    <p class="project-meta" style="text-align:right;"><span data-i18n-fr>Périmètre</span><span data-i18n-en>Scope</span><span data-i18n-fr>Logotype, graphisme de maillots, charte graphique</span><span data-i18n-en>Wordmark, kit graphics, brand guidelines</span></p>
   </div>
 </section>
 
-<section id="p3" class="project">
+<section id="p3" class="project" style="padding-top:0;justify-content:flex-end;">
   <div class="bg-shape"><div class="shape"></div></div>
-  <div class="project-inner">
+  <div class="project-head" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:2rem;">
     <div>
-      <span class="project-num">03 — Identity</span>
+      <span class="project-num" data-i18n-fr>03 — Identité</span><span class="project-num" data-i18n-en>03 — Identity</span>
       <h2 class="project-title">MERIDIAN BOTANICALS</h2>
     </div>
-    <div class="project-meta"><span>Scope</span>Logo system, label design, brand voice</div>
+    <p class="project-meta" style="text-align:right;"><span data-i18n-fr>Périmètre</span><span data-i18n-en>Scope</span><span data-i18n-fr>Système de logo, étiquettes, ton de marque</span><span data-i18n-en>Logo system, label design, brand voice</span></p>
   </div>
 </section>
 
-<section id="p4" class="project">
+<section id="p4" class="project" style="padding-top:0;justify-content:flex-end;">
   <div class="bg-shape"><div class="shape"></div></div>
-  <div class="project-inner">
+  <div class="project-head" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:2rem;">
     <div>
-      <span class="project-num">04 — Identity</span>
+      <span class="project-num" data-i18n-fr>04 — Identité</span><span class="project-num" data-i18n-en>04 — Identity</span>
       <h2 class="project-title">PILOT&nbsp;LIGHT STUDIO</h2>
     </div>
-    <div class="project-meta"><span>Scope</span>Logo, stationery, motion mark</div>
+    <p class="project-meta" style="text-align:right;"><span data-i18n-fr>Périmètre</span><span data-i18n-en>Scope</span><span data-i18n-fr>Logo, papeterie, logo animé</span><span data-i18n-en>Logo, stationery, motion mark</span></p>
   </div>
 </section>
 
-<section id="p5" class="project">
+<section id="p5" class="project" style="padding-top:0;justify-content:flex-end;">
   <div class="bg-shape"><div class="shape"></div></div>
-  <div class="project-inner">
+  <div class="project-head" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:2rem;">
     <div>
-      <span class="project-num">05 — Identity</span>
+      <span class="project-num" data-i18n-fr>05 — Identité</span><span class="project-num" data-i18n-en>05 — Identity</span>
       <h2 class="project-title">RIVET & RYE</h2>
     </div>
-    <div class="project-meta"><span>Scope</span>Logo, menu system, environmental graphics</div>
+    <p class="project-meta" style="text-align:right;"><span data-i18n-fr>Périmètre</span><span data-i18n-en>Scope</span><span data-i18n-fr>Logo, carte, signalétique environnementale</span><span data-i18n-en>Logo, menu system, environmental graphics</span></p>
   </div>
 </section>
 
 <section id="contact">
-  <h2 class="contact-title">LET'S BUILD YOUR NEXT IDENTITY.</h2>
+  <h2 class="contact-title" data-i18n-fr>CONSTRUISONS VOTRE PROCHAINE IDENTITÉ.</h2>
+  <h2 class="contact-title" data-i18n-en>LET'S BUILD YOUR NEXT IDENTITY.</h2>
   <div class="contact-links">
-    <a href="mailto:benjamincatteau@proton.me">Email</a>
+    <a href="mailto:hello@benjamincatteau.com">hello@benjamincatteau.com</a>
     <a href="#">Instagram</a>
     <a href="#">LinkedIn</a>
   </div>
   <footer>
-    <span>Jane Doe — Brand Designer</span>
-    <span>Based in Paris, FR</span>
+    <span data-i18n-fr>Benjamin Catteau — Designer de marque</span>
+    <span data-i18n-en>Benjamin Catteau — Brand Designer</span>
+    <span data-i18n-fr>Basé à Paris, FR</span>
+    <span data-i18n-en>Based in Paris, FR</span>
   </footer>
 </section>
 
 <script>
+  function toggleLang(){
+    const html = document.documentElement;
+    const next = html.lang === 'fr' ? 'en' : 'fr';
+    html.lang = next;
+    document.getElementById('langToggle').textContent = next === 'fr' ? 'EN' : 'FR';
+  }
+
   const dots = document.querySelectorAll('.dot-nav a');
   const sections = document.querySelectorAll('section[id]');
   const io = new IntersectionObserver((entries)=>{
